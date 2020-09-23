@@ -22,7 +22,7 @@ Arduino や mono-wireless などのデバイスとシリアル通信などでや
 
 [python でバイナリデータを読む(PNG を例として)](https://qiita.com/jh_0606/items/56a43bd9f67d05c0e7f4)
 
-![binary_lena](.\fig\binary_lena.JPG)
+![binary_lena](./fig/binary_lena.JPG)
 
 この Byte の並び（数字の並び）が何を意味するかわかっている場合は、Python や他のプログラムで正しく表示されるようになります。
 
