@@ -47,8 +47,9 @@ Arduino や mono-wireless などのデバイスとシリアル通信などでや
 [第 4 回　 UTF-8 の冗長なエンコード](https://gihyo.jp/admin/serial/01/charcode/0004)
 
 例えば、
-”あ”は、Unicode では、U+3042 　になります。
-ビットで表現すると　 0011, 0000, 0100, 0010（0x3042）。
+”あ”は、Unicode では、U+3042 になります。
+
+ビットで表現すると 0011, 0000, 0100, 0010（0x3042）。
 
 UTF-8 で エンコードすると
 
@@ -56,7 +57,8 @@ UTF-8 で エンコードすると
 
 となります。16 進数で表すと 0xe3, 0x81, 0x82。（3 バイト）
 
-UTF-8 符号化ルールでは、U+0800 から U+FFFF に属する文字は、1110-xxxx ,10xx-xxxx, 10xx-xxxx, 右からビットを入れていきます。より詳細は、[第 4 回　 UTF-8 の冗長なエンコード](https://gihyo.jp/admin/serial/01/charcode/0004)。
+UTF-8 符号化ルールでは、U+0800 から U+FFFF に属する文字は、
+1110-xxxx ,10xx-xxxx, 10xx-xxxx, 右からビットを入れていきます。より詳細は、[第 4 回　 UTF-8 の冗長なエンコード](https://gihyo.jp/admin/serial/01/charcode/0004)。
 
 一番右側：10xx-xxxx --> xxxx=0010, xx=00
 
@@ -70,14 +72,14 @@ UTF-16 では、数値の部分は Unicode と同じ 0x3042 になります。(2
 
 ### Python で Binary を扱う
 
-Python で Binary は Bytes 型で取り扱い、b''がついて表示されます。
+Python で Binary は Bytes 型で取り扱い、b'xxx'がついて表示されます。
 また、表記として”\xnn ”が出てきますが、16 進表記文字(n は 0 ～ f)を表しています。
 
 [とほほの Python 入門 - 数値・文字列・型](http://www.tohoho-web.com/python/types.html)
 
 [Python で Unicode コードポイントと文字を相互変換（chr, ord, \x, \u, \U）](https://note.nkmk.me/python-chr-ord-unicode-code-point/)
 
-例えば、文字を使わずに文字列と同様なエスケープシーケンスを使って、「b'a'」と同じ値を持つリテラルを記述する場合は b'\x61'と書きます。
+例えば、文字を使わずに文字列と同様なエスケープシーケンスを使って、「b'a'」と同じ値を持つリテラルを記述する場合は、 b'\x61'と書きます。
 
 ### ASCII 文字列から Binary へ
 
@@ -110,12 +112,15 @@ print(b_data5,type(b_data5))
 
 ```
 
+実際に Binary editor で確かめるためにファイルに書き出してみます。
+Binary にすると文字列のように結合することができます。
+
 ```python
-# 実際にBinary editorで確かめるためにファイルに書き出してみます。
-# Binaryにすると文字列のように結合することができます。
 with open('./b_file1.bin','wb') as f:
     f.write(b_data+b_data2+b_data3+b_data4+b_data5)
 ```
+
+Binary edior で読み込んでみると、
 
 ![binary010](./fig/binary010.JPG)
 
@@ -140,8 +145,9 @@ print(b_data7)
 # >>>b'\xff\xfeB0'
 ```
 
+実際に Binary editor で確かめるためにファイルに書き出してみます。
+
 ```python
-# 実際にBinary editorで確かめるためにファイルに書き出してみます。
 with open('./b_file2.bin','wb') as f:
     f.write(b_data6+b_data7)
 ```
@@ -209,7 +215,7 @@ print(x.to_bytes(2,'big'))
 # >>>b'\x01\x00'
 ```
 
-.to_bytes メソッドで bytes 型に変換できる。byte の読み込み順と何バイトで表すかを指定する必要がある。
+.to_bytes メソッドで bytes 型に変換できます。byte の読み込み順（エンディアン）と何バイトで表すかを引数で指定する必要があります。
 
 ```python
 y=b'\x01\x00'
@@ -223,7 +229,7 @@ bytes 型から整数型に戻すには int.from_bytes 関数を用いること�
 
 参考：[Python でバイナリをあつかうための Tips](https://qiita.com/pashango2/items/5075cb2d9248c7d3b5d4)
 
-様々な値を扱う場合、struct モジュールを利用します。 変換したい数値を何バイトで表現するか（されているか）の情報が必要です。
+様々な値（浮動小数など）を扱う場合、struct モジュールを利用します。 変換したい数値を何バイトで表現するか（されているか）の情報が必要です。
 
 ####　エンコード（pack)
 
