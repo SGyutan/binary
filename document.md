@@ -117,7 +117,7 @@ with open('./b_file1.bin','wb') as f:
     f.write(b_data+b_data2+b_data3+b_data4+b_data5)
 ```
 
-![binary010](.\fig\binary010.JPG)
+![binary010](./fig/binary010.JPG)
 
 16 進数　 61,62,63,64 (abcd)が 5 セット並んでいるのがわかります。
 
@@ -146,7 +146,7 @@ with open('./b_file2.bin','wb') as f:
     f.write(b_data6+b_data7)
 ```
 
-![binary011](.\fig\binary011.JPG)
+![binary011](./fig/binary011.JPG)
 
 UTF-8 でエンコードした値が 3 バイト入っています。次に 4 バイトあります。
 
@@ -174,7 +174,7 @@ with open('./b_file3.bin','wb') as f:
     f.write(b_data8)
 ```
 
-![binary012](.\fig\binary012.JPG)
+![binary012](./fig/binary012.JPG)
 
 ASCII コードの 0x31, 0x32, 0x33, 0x34 　 10 進数では 49, 50, 51, 52 となります。（ASCII コード表を確認してみてください。）
 
